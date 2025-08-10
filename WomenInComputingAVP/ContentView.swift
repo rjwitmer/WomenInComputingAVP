@@ -100,8 +100,8 @@ struct ContentView: View {
                         Image("\(names[personIndex])")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 400, height: 400)
-                            .cornerRadius(20)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .shadow(radius: 20)
                             .padding()
                         
                         Text(bios[personIndex])

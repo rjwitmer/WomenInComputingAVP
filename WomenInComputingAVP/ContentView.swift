@@ -61,12 +61,13 @@ struct ContentView: View {
                         // Previous
                         if personIndex > 0 {
                             personIndex -= 1
-//                            playSound(soundName: "theme")
+                            //                            playSound(soundName: "theme")
                         } else {
                             personIndex = names.count - 1
-//                            playSound(soundName: "theme")
+                            //                            playSound(soundName: "theme")
                         }
                     }
+                    .frame(width: 60, height: 60)
                     
                     Spacer()
                     
@@ -80,13 +81,14 @@ struct ContentView: View {
                         if personIndex < names.count - 1 {
                             stopSound()
                             personIndex += 1
-//                            playSound(soundName: "theme")
+                            //                            playSound(soundName: "theme")
                         } else {
                             stopSound()
                             personIndex = 0
-//                            playSound(soundName: "theme")
+                            //                            playSound(soundName: "theme")
                         }
                     }
+                    .frame(width: 60, height: 60)
                 }
                 .font(.title.weight(.heavy))
                 
@@ -104,9 +106,11 @@ struct ContentView: View {
                             .shadow(radius: 20)
                             .padding()
                         
-                        Text(bios[personIndex])
-                            .font(.title3)
-                            .foregroundStyle(Color.black)
+                        ScrollView {
+                            Text(bios[personIndex])
+                                .font(.title3)
+                                .foregroundStyle(Color.black)
+                        }
                     }
                     .padding()
                 }
@@ -120,6 +124,7 @@ struct ContentView: View {
                         playSound(soundName: "theme")
                     }
                     .font(.title.weight(.heavy))
+                    .frame(width: 60, height: 60)
                     
                 }
             }
@@ -131,12 +136,12 @@ struct ContentView: View {
     
     func getRandomIndex() -> Int {
         var randomIndex: Int
-        do {
-            repeat {
-                randomIndex = Int.random(in: 0..<names.count)
-            } while randomIndex == personIndex
-            return randomIndex
-        }
+        
+        repeat {
+            randomIndex = Int.random(in: 0..<names.count)
+        } while randomIndex == personIndex
+        return randomIndex
+        
     }
     
     func playSound(soundName: String) {
